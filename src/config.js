@@ -1,11 +1,21 @@
+// config.js
+require('dotenv').config(); // Load .env file
+
 const mongoose = require("mongoose");
-const connect = mongoose.connect("mongodb://localhost:27017/Login-tut");
+
+// Check if the MONGODB_URI is defined, otherwise use the local connection
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/Login-tut";
+
+const connect = mongoose.connect(mongoURI, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+});
 
 connect.then(() => {
-    console.log("Database is successfully connected");
+    console.log(`Database is successfully connected to ${mongoURI}`);
 })
-.catch(() => {
-    console.log("Database cannot be connected");
+.catch((err) => {
+    console.error("Database connection error:", err);
 });
 
 // Create schema
