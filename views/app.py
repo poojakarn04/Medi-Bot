@@ -15,6 +15,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return "Welcome to the Hackman App!"
+
 @app.route('/receive-data', methods=['POST'])
 def handle_data():
     data = request.json
