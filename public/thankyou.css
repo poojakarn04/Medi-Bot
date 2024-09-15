@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('home_bg.jpg'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: purple; /* Optional: to ensure text is readable against the background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    
+}

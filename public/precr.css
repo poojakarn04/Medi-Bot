@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('path/to/your/background-image.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333;
+}
+
+.recent-visits-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent to show background */
+    border-radius: 10px;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #8B008B;
+    font-family: 'Times New Roman', Times, serif, cursive;
+}
+
+#content-container {
+    margin-bottom: 20px;
+}
+
+.user-details, .data-details, .advice-details {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.user-details p span, .data-details p span {
+    font-weight: bold;
+    color: purple;
+}
+
+#advice-container {
+    padding: 10px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    background-color: #e7f1ff;
+}
+
+#advice-container p {
+    margin: 0;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 30px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.button-green {
+    background-color: #28a745;
+}
+
+.button-green:hover {
+    background-color: #218838;
+}
+
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}

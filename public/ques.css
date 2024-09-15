@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #questions-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .question-container {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+  
+  .tts-button, .yes-button, .no-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tts-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .yes-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .no-button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  #submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  #pagination {
+    margin-bottom: 20px;
+  }
+  
+  #pagination button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #prev-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  #next-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .question-container.unanswered {
+    background-color: #ffe6e6; /* Light red for unanswered questions */
+  }
+  
+  .question-container.answered {
+    background-color: #e6ffe6; /* Light green for answered questions */}

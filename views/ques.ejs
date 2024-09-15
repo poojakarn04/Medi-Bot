@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire</title>
+  <link rel="stylesheet" href="ques.css">
+</head>
+
+<body>
+  <div id="questions-container"></div>
+  <button id="submit-button" onclick="submitAnswers()" style="display:none;">Submit</button>
+
+  <script>
+    function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    // Get the 'lang' parameter from the URL
+    const lang = getQueryParameter('lang');
+    alert(`The lang parameter is: ${lang}`);
+    let questions;
+    console.log('Selected language:', lang);
+    if (lang === 'kannada') {
+      questions = [
+      "ನಿಮಗೆ ಜ್ವರ ಇದೆಯೇ?",
+      "ನಿನ್ನೆ ಅಥವಾ ಮೊನ್ನೆ ಮಳೆಯಲ್ಲಿ ನೆಂದಿರುವಿರ?",
+      "ನೀವು ಇತ್ತೀಚೆಗೆ ಎಲ್ಲಾದರೂ ಪ್ರಯಾಣ ಮಾಡಿದೀರಾ?",
+      "ತೀವ್ರ ಹವಾಮಾನ ಬದಲಾವಣೆ?",
+      "ಇತ್ತೀಚೆಗೆ ನೀವು ಸೇವಿಸುವ ನೀರಿನಲ್ಲಿ ಏನಾದ್ರು ಬದಲಾವಣೆ ಆಯ್ತೇ?",
+      "ಶೀತ ಅಥವಾ ಕೆಮ್ಮು ಉಂಟಾಗಿದೆಯೆ?",
+      "ವಿಪರೀತ ಮೂಗು ಸೋರುವಿಕೆ ಇದೆಯೇ?",
+      "ಹೊಟ್ಟೆ ನೋವೂ ಏನಾದ್ರು ಇದೆಯಾ?",
+      "ಎರಡಕ್ಕು ಜಾಸ್ತಿ ಬಾರಿ ಭೇದಿ ಆಯಿತೆ?",
+      "ಎರಡಕ್ಕು ಹೆಚ್ಚು ಬಾರಿ ವಾಂತಿ ಆಯಿತೇ?",
+      "ಅತಿಸಾರ ಅಂದರೆ ವಿಪರೀತ ಬೇದಿ ಇದೆಯಾ?",
+      "ಮಲದಲ್ಲಿ ರಕ್ತ ಕಾಣಸಿಕೊಂಡಿದು ಉಂಟ?",
+      "ನಿಮ್ಮ ಮುಖ ಅಥವಾ ದೇಹದ ಮೇಲೆ ಯಾವುದೇ ದದ್ದುಗಳು ಅಥವಾ ಕೆಂಪು ಗುಳ್ಳೆಗಳು ಆಗಿವೆಯೇ?",
+      "ಒಣ ಬಾಯಿ ಅಥವಾ ನುಂಗಲು ತೊಂದರೆ?",
+      "ದೇಹದಲ್ಲಿ ನೀರಿನಂಶ ತೀರಾ ಕಡಿತ?",
+      "ನಿಮ್ಮ ಸುತ್ತಮುತ್ತ ಸೊಳ್ಳೆಗಳ ಕಾಟ ಇದೆಯೇ?",
+      "ಜ್ವರ ಇರುವ ವ್ಯಕ್ತಿ ಹತ್ತಿರ ಸಂಪರ್ಕ ಬೆಳೆಸಿದಿರಾ?",
+      "ಗಂಟಲು ನೋವು ಅಥವಾ ಕಿರಿಕಿರಿ?",
+      "ಕೀಳು ಅಥವಾ ಸ್ನಾಯು ನೋವು?",
+      "ವಿಪರೀತ ಮೈ ಕೈ ನೋವು?",
+      "ಬೆನ್ನು ಅಥವಾ ಬೆನ್ನುಮೂಳೆಯ ನೋವು?",
+      "ಬಹಳ  ಸುಸ್ತು ಅಥವಾ ನಿತ್ರಾಣ?",
+      "ತಲೆ ನೋವು ಇದೆಯೇ?",
+      "ಚಳಿ ಚಳಿ ಅನಿಸುತಿದೆಯೆ?",
+      "ನೀನು ತುಂಬ ಬೇವರುತಿದ್ದಿರಾ?",
+      "ಕಣ್ಣುಗಳು ಅಥವಾ ಕಣ್ಣಿನ ಗುಡ್ಡೆಗಳು ನೋವುತಿದೆಯೇ?",
+      "ರಸ್ತೆ ಬದಿ ಅಥವಾ ಅನೈರ್ಮಲ್ಯ ಸ್ಥಳದಲ್ಲಿ ಆಹಾರ ಸೇವೆನೆ?",
+      "ಕಲುಷಿತ ನೀರು ಮನೆಯ ಸುತ್ತಮುತ್ತ ಇರುವುದು ಉಂಟೆ?",
+      "ಹೊಟ್ಟೆ ಉಬ್ಬರ ಅನಿಸುತಿದೆಯ?",
+      "ಹಸಿವಿನ ನಷ್ಟ ಆಗಿದೆಯೇ?",
+      "ಲೆಕ್ಕಕಿಂತ ಹೆಚ್ಚೂ ಆಹಾರ ಸೇವೆ ಮಾಡಿರುವಿರಾ?",
+      "ನೀವು 3 ದಿನಗಳಿಗಿಂತ ಹೆಚ್ಚು ಕಾಲ ಈ ರೋಗಲಕ್ಷಣಗಳನ್ನು ಅನುಭವಿಸುತ್ತಿದ್ದೀರಾ?"
+      ];
+    } else {
+      questions = [
+        "Do you have fever?",
+        "Did you drench in rain?",
+        "Did you travel anywhere?",
+        "Is there any weather change?",
+        "Is there any water change?",
+        "Do you also have cold?",
+        "Do you have cough?",
+        "Do you have running nose?",
+        "Do you have abdominal pain?",
+        "Do you have loose stools?",
+        "Are you experiencing vomiting sensation or vomiting?",
+        "Do you have rashes?",
+        "Are you facing any issues related to diarrhea?",
+        "Do you feel dehydrated?",
+        "Do you have dryness in mouth?",
+        "Are there too many mosquitoes in your area?",
+        "Have you had any contact with a person of similar symptoms?",
+        "Do you have throat pain?",
+        "Do you have joint pain?",
+        "Do you have body pain?",
+        "Do you have back pain?",
+        "Are you experiencing blood in stools?",
+        "Are you experiencing any weakness?",
+        "Do you have headache?",
+        "Do you feel you have been contaminated with food?",
+        "Is your area water contaminated recently?",
+        "Are you sweating?",
+        "Do you have sore eyes?",
+        "Are you experiencing all these for more than three days?",
+        "Are you facing bloating?",
+        "Do you have loss of appetite?",
+        "Have you over-eaten recently?"
+      ];
+    }
+    const answers = Array(questions.length).fill(null);
+    let currentPage = 0;
+    const questionsPerPage = 5;
+    function createQuestionElement(index) {
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question-container');
+      questionDiv.id = `question-${index}`;
+      const questionText = document.createElement('span');
+      questionText.textContent = questions[index];
+      const ttsButton = document.createElement('button');
+      ttsButton.textContent = '🔊';
+      ttsButton.classList.add('tts-button');
+      ttsButton.onclick = () => speak(questions[index]);
+      const yesButton = document.createElement('button');
+      yesButton.textContent = 'Yes';
+      yesButton.classList.add('yes-button');
+      yesButton.onclick = () => recordAnswer(index, 1);
+      const noButton = document.createElement('button');
+      noButton.textContent = 'No';
+      noButton.classList.add('no-button');
+      noButton.onclick = () => recordAnswer(index, 0);
+      questionDiv.appendChild(questionText);
+      questionDiv.appendChild(ttsButton);
+      questionDiv.appendChild(yesButton);
+      questionDiv.appendChild(noButton);
+      return questionDiv;
+    }
+    function renderQuestions() {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '';
+      const startIndex = currentPage * questionsPerPage;
+      const endIndex = Math.min(startIndex + questionsPerPage, questions.length);
+      for (let i = startIndex; i < endIndex; i++) {
+        const questionElement = createQuestionElement(i);
+        questionElement.classList.add(answers[i] === null ? 'unanswered' : 'answered');
+        container.appendChild(questionElement);
+      }
+    }
+    function recordAnswer(index, answer) {
+      answers[index] = answer;
+      const questionElement = document.getElementById(`question-${index}`);
+      questionElement.classList.remove('unanswered');
+      questionElement.classList.add('answered');
+      const startIndex = currentPage * questionsPerPage;
+      const endIndex = Math.min(startIndex + questionsPerPage, questions.length);
+      const allAnswered = answers.slice(startIndex, endIndex).every(answer => answer !== null);
+      if (allAnswered) {
+        if ((currentPage + 1) * questionsPerPage < questions.length) {
+          currentPage++;
+          renderQuestions();
+        } else {
+          document.getElementById('questions-container').innerHTML = 'You have completed all the questions.';
+          document.getElementById('submit-button').style.display = 'block';
+        }
+      }
+    }
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = lang === 'kannada' ? 'kn-IN' : 'en-US';
+      window.speechSynthesis.speak(msg);
+    }
+    function submitAnswers() {
+      if (answers.includes(null)) {
+        alert("Please answer all questions.");
+        return;
+      }
+      console.log("Final answers:", answers);
+      alert("Final answers: " + JSON.stringify(answers));
+      fetch('http://localhost:8000/receive-data', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ answers: answers })
+      }).then(response => response.json())
+        .then(data => {
+          console.log('Server response:', data);
+          const a=answers.join(',');
+          window.location.href = `/precr?data=${encodeURIComponent(JSON.stringify(data))}&answer=${a}`;
+         
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    window.onload = renderQuestions;
+  </script>
+</body>
+
+</html>

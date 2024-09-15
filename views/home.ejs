@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="circle"></div>
+        <div class="username"><%= username %></div>
+        <div class="popup" id="popup">Hi, <%= username %><br> Welcome back!!</div>
+    </div>
+
+    <div class="recent-visits-box">
+        <h2>Recent visits</h2>
+
+        <div class="table-container">
+            <table class="recent-visits-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% loginHistory.forEach(function(time) { 
+                        const dateTime = new Date(time);
+                        const date = dateTime.toLocaleDateString();
+                        const timeStr = dateTime.toLocaleTimeString();
+                    %>
+                        <tr>
+                            <td><%= date %></td>
+                            <td><%= timeStr %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <!-- Start Button -->
+        <a href="/question?lang=english"><button class="start-button">English</button></a>
+        <a href="/question?lang=kannada"><button class="start-button">Kannada</button></a>
+
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var circle = document.querySelector(".circle");
+            var username = document.querySelector(".username").textContent.trim();
+            var firstLetter = username.charAt(0).toUpperCase();
+            circle.textContent = firstLetter; // Display first letter in the circle
+            // Toggle visibility of popup on circle click
+            circle.addEventListener("click", function() {
+                var popup = document.getElementById("popup");
+                popup.classList.toggle("show");
+            });
+        });
+        
+    </script>
+</body>
+</html>

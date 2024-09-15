@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #doctor-name, #selected-answers {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #doctor-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        #selected-answers {
+            font-size: 1em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Doctor Appointment</h1>
+    <div id="doctor-name"></div>
+    <div id="selected-answers"></div>
+
+    <script>
+        // Retrieve the doctorName and answers from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const doctorName = urlParams.get('doctorName');
+        let answers = urlParams.get('answer');
+        answers = answers ? answers.split(',') : [];
+        console.log('Doctor Name:', doctorName, "Answers:", answers);
+        // Display the doctor name
+        const doctorNameDiv = document.getElementById('doctor-name');
+        doctorNameDiv.innerText = `Selected Doctor: ${doctorName}`;
+        // Define array B
+        const B = [
+            'Fever', 'exposure_rain', 'travel_history', 'weather_change', 'water_change', 
+            'cold_cough', 'runny_nose', 'abdominal_pain', 'loose_stools', 'vomiting', 
+            'diarrhea', 'blood_stools', 'rashes', 'dry_mouth', 'dehydration', 
+            'mosquito_area', 'contact_person', 'throat_pain', 'joint_pain', 'body_pain', 
+            'back_pain', 'weakness', 'headaches', 'chills', 'sweats', 'sore_eyes', 
+            'contaminated_food', 'contaminated_water', 'bloating', 'loss_of_appetite', 
+            'over_eaten', 'more_than3_days'
+        ];
+        // Create array C with selected answers
+        const C = [];
+        for (let i = 0; i < answers.length; i++) {
+            if (answers[i] == '1') {
+                C.push(B[i]);
+            }
+        }
+        // Display the selected answers as a sentence
+        const selectedAnswersDiv = document.getElementById('selected-answers');
+        selectedAnswersDiv.innerText = `Symptoms: ${C.join(', ')}.`;
+    </script>
+</body>
+</html>

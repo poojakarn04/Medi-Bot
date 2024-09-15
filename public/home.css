@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-bar {
+    border-top: 120px solid rgb(150, 9, 150);
+    position: relative;
+}
+
+.top-bar::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: rgb(150, 9, 150);
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(118, 198, 234);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    top: -90px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    top: -20px;
+    right: 50px;
+    background-color: rgba(27, 70, 83, 0.8);
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.popup.show {
+    display: block;
+}
+
+.username {
+    display: none;
+    position: absolute;
+    top: -20px;
+    right: 60px;
+    font-size: 18px;
+    color: purple;
+}
+
+.circle:hover + .username {
+    display: none;
+    pointer-events: none;
+}
+
+.mode {
+    position: absolute;
+    top: -10px;
+    right: 120px;
+    font-size: 14px;
+    color: purple;
+    cursor: pointer;
+}
+
+.mode:hover {
+    text-decoration: underline;
+}
+
+.recent-visits-box {
+    background-color: rgb(241, 169, 249);
+    border-radius: 50px;
+    padding: 20px 30px;
+    margin: 20px 20px;
+    text-align: center;
+    font-size: 30px;
+    height:100px; /* Adjust height to accommodate the table and button */
+    width: 60%; /* Adjust width as needed */
+    margin: 20px auto; /* Center the box horizontally */
+}
+
+/* Styles for the table container */
+.table-container {
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 90%; /* Adjust as necessary */
+}
+
+/* Styles for the table */
+.recent-visits-table {
+    width: 100%;
+    border-collapse: separate;
+    text-align: left;
+    border-spacing: 0;
+}
+
+/* Styles for the table header */
+.recent-visits-table th {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: none;
+    border-right: none;
+}
+
+/* Styles for the table cells */
+.recent-visits-table td {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: none;
+    border-right: none;
+}
+
+/* Curved border for table */
+.recent-visits-table th:first-child,
+.recent-visits-table td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.recent-visits-table th:last-child,
+.recent-visits-table td:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.circle:hover + .username + .table-container {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 40px;
+    text-align: center;
+}
+
+ul li {
+    margin: 20px 0;
+    font-size: 10px;
+}
+
+/* Style for the Start button */
+.start-button {
+    background-color: rgb(118, 198, 234);
+    color: white;
+    border: none;
+    padding: 20px 20px;
+    margin-top: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    height:60px;
+    width:100px;
+}
+
+.start-button:hover {
+    background-color: rgb(118, 198, 234);
+}

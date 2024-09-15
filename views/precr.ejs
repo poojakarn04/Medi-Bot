@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Precr Page</title>
+  <link rel="stylesheet" href="/precr.css">
+</head>
+<body>
+  <div class="recent-visits-box">
+    <h2>Summary of the health check-up</h2>
+    
+    <div id="content-container">
+      <div id="user-container" class="user-details"></div>
+      <div id="data-container" class="data-details"></div>
+      <div id="advice-container" class="advice-details"></div>
+    </div>
+  </div>
+
+  <div id="buttons-container">
+    <a id="book-appointment-link"><button class="button button-green">Book an appointment</button></a>
+    <a href="/thankyou"><button class="button button-red">End</button></a>
+  </div>
+ 
+  <script>
+    // Retrieve the data passed from the server
+    const data = <%- JSON.stringify(data || {}) %>; // Safely escape special characters
+    const user = <%- JSON.stringify(user || {}) %>; // Safely escape special characters
+
+    console.log('User details:', user);
+    console.log('Retrieved data:', data);
+
+    // Display the user details and disease name on the page
+    const userContainer = document.getElementById('user-container');
+    userContainer.innerHTML = `
+      <p>Name: <span>${user.name}</span></p>
+      <p>Phone Number: <span>${user.phone}</span></p>
+      <p>Gender: <span>${user.gender}</span></p>
+      <p>Age: <span>${user.age}</span></p>
+    `;
+    const urlParams = new URLSearchParams(window.location.search);
+    const answers = urlParams.get('answer')
+    const diseaseName = data.message;
+
+    const dataContainer = document.getElementById('data-container');
+    dataContainer.innerHTML = `<p>Disease Predicted: <span>${diseaseName}</span></p>`;
+
+    const adviceContainer = document.getElementById('advice-container');
+    let adviceMessage = '';
+
+    if (diseaseName === 'Common Fever') {
+      adviceMessage = 'Advised medication: DOLO650';
+    } 
+    if (diseaseName === 'Indigestion') {
+      adviceMessage = 'Advised medication: Antacid';
+    } 
+    if (diseaseName === 'Dengue Fever' || diseaseName === 'Typhoid') {
+      adviceMessage = 'Go for a blood check-up';
+    } 
+
+    adviceContainer.innerHTML = `<p>${adviceMessage}</p>`;
+
+    // Update the appointment link with the diseaseName query parameter
+    const bookAppointmentLink = document.getElementById('book-appointment-link');
+    bookAppointmentLink.href = `/appoint?diseaseName=${encodeURIComponent(diseaseName)}&answer=${answers}`;
+  </script>
+</body>
+</html>
