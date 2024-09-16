@@ -10,15 +10,23 @@ from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.metrics import accuracy_score, confusion_matrix 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env file
+
+MONGODB_URI = os.getenv('MONGODB_URI')
+
+
 
 app = Flask(__name__)
 CORS(app)
 
-#@app.route('/')
-#def home():
- #   return "Flask is running!"  # Just a simple message for now
+@app.route('/')
+def home():
+    return render_template('login.html') 
 
 
 @app.route('/receive-data', methods=['POST'])

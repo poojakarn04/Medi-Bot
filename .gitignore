@@ -6,6 +6,7 @@ venv/
 # Node
 node_modules/
 *.log
+package-lock.json
 
 # Environment
 .env
@@ -17,3 +18,4 @@ node_modules/
 # OS specific files
 .DS_Store
 Thumbs.db
+
