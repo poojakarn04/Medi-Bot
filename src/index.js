@@ -77,20 +77,29 @@ app.post("/signup", async (req, res) => {
         age: req.body.age
     };
 
-    // Check if user already exists
-    const existingUser = await collection.findOne({ name: data.name });
-    if (existingUser) {
-        res.send("User already exists, Please choose a different username");
-    } else {
-        const userdata = await collection.insertMany(data);
-        console.log(userdata);
+    try {
+        // Check if user already exists
+        const existingUser = await collection.findOne({ name: data.name });
+        if (existingUser) {
+            // Send an error message and render the signup page again
+            return res.render("signup", { message: "User already exists, Please choose a different username" });
+        } 
 
-        // Store user details in session
+        // Insert new user data
+        await collection.insertMany(data);
+        console.log("User data inserted:", data);
+
+        // Store user details in session (optional, if you want to auto-login)
         req.session.user = data;
 
-        res.send("Signup successful! Please go back to the login page.");
+        // Redirect to login page
+        res.redirect("/"); // Redirect to the root URL where the login page is served
+    } catch (err) {
+        console.error("Error during signup:", err);
+        res.status(500).send("An error occurred: " + err.message);
     }
 });
+
 
 // Login part
 // Login part

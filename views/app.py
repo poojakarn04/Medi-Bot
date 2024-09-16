@@ -24,9 +24,7 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def home():
-   return send_from_directory('static/views', 'login.ejs')
+
 
 
 @app.route('/receive-data', methods=['POST'])
