@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np 
+import os
 from scipy.stats import mode 
 #import matplotlib.pyplot as plt 
 import seaborn as sns 
@@ -15,6 +16,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+#@app.route('/')
+#def home():
+ #   return "Flask is running!"  # Just a simple message for now
 
 
 @app.route('/receive-data', methods=['POST'])
@@ -72,5 +76,9 @@ def handle_data():
     response = {'message': final_pred}
     return jsonify(response), 200
 
+
+
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=8000)
+    port = int(os.environ.get('PORT', 8000))  # Use Render's provided port or default to 8000
+    app.run(debug=False, host='0.0.0.0', port=port)
+
