@@ -10,7 +10,7 @@ from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.metrics import accuracy_score, confusion_matrix 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -26,7 +26,7 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return render_template('login.html') 
+   return send_from_directory('static/views', 'login.ejs')
 
 
 @app.route('/receive-data', methods=['POST'])

@@ -1,7 +1,7 @@
 const express = require('express');
-const path = require("path");
-const mongoose = require("mongoose");
-const collection = require("./config");
+const path = require('path');
+const mongoose = require('mongoose');
+const collection = require('./config');
 const session = require('express-session');
 
 const app = express();
@@ -12,16 +12,17 @@ app.use(express.urlencoded({ extended: false }));
 
 // EJS set up
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Set the views directory
 
 // Static folder path
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public'
 
 // Configure session middleware
 app.use(session({
-    secret: 'your_secret_key', // replace with a secure key
+    secret: 'your_secret_key', // Replace with a secure key
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // set to true if using HTTPS
+    cookie: { secure: false } // Set to true if using HTTPS
 }));
 
 // Routes
@@ -52,6 +53,7 @@ app.get('/docpage', (req, res) => {
 app.get('/home_doc', (req, res) => {
     res.render('home_doc');
 });
+
 app.get('/precr', (req, res) => {
     const data = req.query.data ? JSON.parse(req.query.data) : null;
     const userDetails = req.session.user;
@@ -93,7 +95,6 @@ app.post("/signup", async (req, res) => {
 });
 
 // Login part
-// Login part
 app.post("/login", async (req, res) => {
     try {
         const check = await collection.findOne({ phone: req.body.phone }); // Match phone instead of username
@@ -123,8 +124,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-
-const port = process.env.PORT || 5000;  // Use Render's port or default to 5000
+const port = process.env.PORT || 5000;  // Use environment variable or default to 5000
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
